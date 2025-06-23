@@ -4,7 +4,7 @@
     <v-app-bar app color="dark" dark>
       <v-container class="d-flex align-center">
         <v-icon class="mr-2">mdi-silverware-fork-knife</v-icon>
-        <v-toolbar-title class="font-weight-bold text-orange">Restoran</v-toolbar-title>
+        <v-toolbar-title class="font-weight-bold text-orange">Adam Grills</v-toolbar-title>
         <v-spacer></v-spacer>
         <v-btn text to="/">Home</v-btn>
         <v-btn text to="/about">About</v-btn>

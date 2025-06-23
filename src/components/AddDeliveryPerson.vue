@@ -95,7 +95,11 @@ export default {
   },
 
   computed: {
-    ...mapGetters(['getLoginDetails'])
+    ...mapGetters(['getLoginDetails']),
+    outletDetails(){
+        return this.getLoginDetails;
+      }
+
   },
 
   methods: {
@@ -104,6 +108,60 @@ export default {
       this.$refs.form.resetValidation();
     },
 
+    async submitForm() {
+      try {
+        if (this.$refs.form.validate()) {
+          this.isLoading = true;
+          this.error = null;
+
+          const formData = new FormData();
+          
+          // Create the deliveryModel JSON
+          const deliveryModel = {
+            name: this.deliveryPerson.name,
+            // outlet_id: 1,
+            outlet_id: this.outletDetails.id,
+            address: this.deliveryPerson.address,
+            phone: this.deliveryPerson.phone,
+            email: this.deliveryPerson.email,
+            licenseNumber: this.deliveryPerson.licenseNumber,
+            aadharNumber: this.deliveryPerson.aadharNumber
+          };
+
+         
+          formData.append('deliveryModel', JSON.stringify(deliveryModel));
+
+          
+          if (this.deliveryPerson.licenseImage) {
+            formData.append('licenseImage', this.deliveryPerson.licenseImage);
+          }
+          if (this.deliveryPerson.aadharImage) {
+            formData.append('aadharImage', this.deliveryPerson.aadharImage);
+          }
+
+          const response = await fetch('http://localhost:8448/api/outletdetails/addDelivery', {
+            method: 'POST',
+            body: formData
+          });
+
+          if (!response.ok) {
+            throw new Error('Failed to add delivery person');
+          }
+
+          const data = await response.json();
+          console.log('Delivery person added successfully:', data);
+          
+          this.resetForm();
+          this.$emit('close');
+          this.$emit('success', data);
+        }
+      } catch (error) {
+        console.error('Error adding delivery person:', error);
+        this.error = error.message || 'Failed to add delivery person';
+      } finally {
+        this.isLoading = false;
+      }
+    }
   
   }
 };

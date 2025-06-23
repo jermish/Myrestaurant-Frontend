@@ -10,7 +10,7 @@
         <v-container class="d-flex align-center">
           <v-app-bar-title class="text-deep-orange text-h4 font-weight-bold text-amber-accent-3">
             <i class="fas fa-utensils mr-2"></i>
-            Bella Vista
+            Adam Grills
           </v-app-bar-title>
           
           <v-spacer></v-spacer>
@@ -94,7 +94,7 @@
         <section id="hero" class="hero-section">
           <div class="hero-content fade-in">
             <h1 class="text-h1 font-weight-bold mb-4">
-              Welcome to Bella Vista
+              Welcome to Adam Grills
             </h1>
             <p class="text-h5 mb-8 text-grey-lighten-2">
               Experience culinary excellence in an atmosphere of elegance
@@ -148,7 +148,7 @@
                     Our Story
                   </h2>
                   <p class="text-h6 text-grey-darken-2 mb-4">
-                    For over 25 years, Bella Vista has been serving exceptional cuisine 
+                    For over 25 years, Adam Grills has been serving exceptional cuisine 
                     crafted with passion and precision. Our commitment to using only the 
                     finest ingredients creates an unforgettable dining experience.
                   </p>
@@ -198,7 +198,7 @@
                     <p class="text-body-1 text-grey-darken-2 mb-4">{{ dish.description }}</p>
                     <div class="d-flex justify-space-between align-center">
                       <span class="text-h5 font-weight-bold text-amber-darken-2">
-                        ${{ dish.price }}
+                        ₹{{ dish.price }}
                       </span>
                       <v-rating 
                         :model-value="dish.rating" 
@@ -365,26 +365,26 @@
         ],
         menuHighlights: [
           {
-            name: 'Truffle Risotto',
-            description: 'Creamy arborio rice with black truffle, parmesan, and wild mushrooms',
-            price: 32,
-            rating: 4.8,
-            icon: 'fas fa-seedling'
-          },
-          {
-            name: 'Wagyu Beef Steak',
-            description: 'Premium A5 wagyu with roasted vegetables and red wine reduction',
-            price: 89,
-            rating: 4.9,
-            icon: 'fas fa-drumstick-bite'
-          },
-          {
-            name: 'Lobster Thermidor',
-            description: 'Fresh Atlantic lobster with cognac cream sauce and gruyere cheese',
-            price: 65,
-            rating: 4.7,
-            icon: 'fas fa-fish'
-          }
+        name: 'Butter Chicken',
+        description: 'Tender chicken pieces in rich, creamy tomato gravy with aromatic Indian spices',
+        price: 245,
+        rating: 4.8,
+        image: '@/assets/butter.jpg'
+      },
+      {
+        name: 'Lamb Biryani',
+        description: 'Fragrant basmati rice layered with tender lamb, saffron, and authentic spices',
+        price: 220,
+        rating: 4.9,
+        image: '@/assets/lamb.jpg'
+      },
+      {
+        name: 'Grilled Fish Platter',
+        description: 'Fresh sea bass grilled to perfection with herbs, served with roasted vegetables',
+        price: 280,
+        rating: 4.7,
+        image: '@/assets/fish-platter.jpeg'
+      }
         ],
         contactInfo: [
           {
@@ -493,16 +493,20 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.15);
   }
   
-  .menu-item-card {
-    background: linear-gradient(135deg, #fff 0%, #fafafa 100%);
-    border-left: 4px solid #d4af37;
-    transition: all 0.3s ease;
-  }
-  
-  .menu-item-card:hover {
-    border-left-color: #b8860b;
-    transform: scale(1.02);
-  }
+  .food-image {
+  transition: transform 0.3s ease;
+}
+
+.menu-item-card {
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+.menu-item-card:hover .food-image {
+  transform: scale(1.05);
+}
+.menu-item-card:hover {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
+}
   
   .stats-section {
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
