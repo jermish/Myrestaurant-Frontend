@@ -1,3 +1,15 @@
+Login
+Admin : admin@gmail.com
+        admin
+
+Outlet : adam@gmail.com
+        adam
+        
+User : priya@gmail.com
+        priya123       
+
+
+
 # resturant
 
 ## Project setup
